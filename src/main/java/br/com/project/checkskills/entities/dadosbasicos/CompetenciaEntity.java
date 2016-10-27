@@ -18,15 +18,16 @@ public class CompetenciaEntity extends BaseEntity<Long> {
 	private static final long serialVersionUID = 1L;
 
 	@NotNull
-	@Column(length = 70, nullable = false)
+	@Column(name="NOME",length = 75, nullable = false)
 	private String nome;
 
-	@Column(length = 255, nullable = true)
+	@Column(name="DESCRICAO",length = 255, nullable = true)
 	private String descricao;
 
 	@JoinColumn(name = "ID_TIPO_COMPETENCIA", referencedColumnName = "ID_TIPO_COMPETENCIA",nullable=false)
 	@ManyToOne(optional = false)
 	private TipoCompetenciaEntity tipoCompetencia;
+	
 	
 	public CompetenciaEntity() {
 		

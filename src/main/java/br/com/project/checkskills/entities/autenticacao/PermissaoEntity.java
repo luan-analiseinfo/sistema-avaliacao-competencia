@@ -16,7 +16,7 @@ public class PermissaoEntity extends BaseEntity<Long>{
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name="role", length=45, nullable=false, unique=true)
+	@Column(name="ROLE", length=45, nullable=false, unique=true)
 	private String role;
 
 	

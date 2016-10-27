@@ -25,7 +25,7 @@ public class CargoEntity extends BaseEntity<Long> {
 	@Column(name = "nome_cargo", length = 45, nullable = false)
 	private String nomeCargo;
 
-	@Column(length = 255, nullable = true)
+	@Column(name="Descricao",length = 255, nullable = true)
 	private String descricao;
 
 	@JoinColumn(name = "ID_NIVEL", referencedColumnName = "ID_NIVEL", nullable = false)

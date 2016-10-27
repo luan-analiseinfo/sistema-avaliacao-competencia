@@ -19,13 +19,14 @@ import br.com.project.checkskills.utils.BaseEntity;
 public class DepartamentoEntity extends BaseEntity<Long> {
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "NOME_DEPARTAMENTO")
+	@NotNull(message="Campo obrigatório")
+	@Column(name = "NOME_DEPARTAMENTO", length=75,nullable=false)
 	private String nomeDepartamento;
 	
 
     @JoinColumn(name = "ID_ORGANIZACAO", referencedColumnName = "ID_ORGANIZACAO",nullable=false)
     @ManyToOne(optional = false)
-    @NotNull
+    @NotNull(message="Campo obrigatório")
     private OrganizacaoEntity organizacao;
     
     @JoinColumn(name = "ID_DEPARTAMENTO_PAI", referencedColumnName = "ID_DEPARTAMENTO")

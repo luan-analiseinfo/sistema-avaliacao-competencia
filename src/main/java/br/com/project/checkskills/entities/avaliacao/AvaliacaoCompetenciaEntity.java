@@ -35,8 +35,8 @@ public class AvaliacaoCompetenciaEntity extends BaseEntity<Long> {
 
 	@ManyToOne(fetch=FetchType.EAGER,optional=false)
 	@JoinColumns({
-		@JoinColumn(name="ID_COMPETENCIA",referencedColumnName = "ID_COMPETENCIA"),
-		@JoinColumn(name="ID_CARGO", referencedColumnName="ID_CARGO"),
+		@JoinColumn(name="ID_COMPETENCIA",referencedColumnName = "ID_COMPETENCIA",nullable=false),
+		@JoinColumn(name="ID_CARGO", referencedColumnName="ID_CARGO",nullable=false),
 	})
 	private CargoCompetenciaEntity cargoCompetencia;
 

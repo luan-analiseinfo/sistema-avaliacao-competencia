@@ -5,6 +5,7 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import br.com.project.checkskills.utils.BaseEntity;
 
@@ -14,7 +15,9 @@ import br.com.project.checkskills.utils.BaseEntity;
 public class NivelEntity extends BaseEntity<Long> {
 
 	private static final long serialVersionUID = 1L;
-	@Column(name = "nivel", length = 45, nullable = false)
+	
+	@Column(name = "NIVEL", length = 45, nullable = false)
+	@NotNull(message="Campo obrigatório")
 	private String nivel;
 
 	public String getNivel() {

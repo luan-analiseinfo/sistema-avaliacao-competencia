@@ -29,15 +29,15 @@ public class FeedbackEntity extends BaseEntity<Long> {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "titulo")
+	@Column(name = "TITULO",length=75, nullable=false)
 	private String titulo;
 	
     @Lob
-    @Column(name = "Observacao")
+    @Column(name = "OBSERVACAO",nullable=false,length=455)
     private String observacao;
     
     @Basic(optional = false)
-    @Column(name = "data_cadastro")
+    @Column(name = "DATA_CADASTRO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCadastro;
 

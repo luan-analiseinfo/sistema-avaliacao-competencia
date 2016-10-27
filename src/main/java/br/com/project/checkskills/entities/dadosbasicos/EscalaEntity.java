@@ -21,11 +21,11 @@ public class EscalaEntity extends BaseEntity<Long>{
 	private static final long serialVersionUID = 1L;
 
 	  	@Basic(optional = false)
-	    @Column(name = "NOME")
+	    @Column(name = "NOME",nullable=false)
 	    private String nome;
 	    
 	  	@Basic(optional = false)
-	    @Column(name = "VALOR")
+	    @Column(name = "VALOR",nullable=false)
 	    private int valor;
 	    
 

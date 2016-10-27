@@ -5,7 +5,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Digits;
 
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.springframework.stereotype.Component;
@@ -20,22 +19,22 @@ public class OrganizacaoEntity extends BaseEntity<Long>{
 
 	private static final long serialVersionUID = 1L;
 
-	@NotNull(message="Compo obrigatório")
-	@Column(name="RAZAO_SOCIAL")
+	@NotNull(message="Campo obrigatório")
+	@Column(name="RAZAO_SOCIAL", length=255, nullable=false)
 	private String razaoSocial;
 	
-	@NotNull
-	@Column(name="RAMO_ATUACAO")
+	@NotNull(message="Campo obrigatório")
+	@Column(name="RAMO_ATUACAO", length=255, nullable=false)
 	private String ramoAtuacao;
 
 	@CNPJ(message="Dados inválidos")
-	@Column(name="CNPJ")
-	@NotNull 
+	@Column(name="CNPJ",length=18,nullable=false,unique=true)
+	@NotNull (message="Campo obrigatório")
 	private String cnpj;
 	
 
-	@Column(name="TELEFONE")
-	@NotNull
+	@Column(name="TELEFONE", nullable=false)
+	@NotNull(message="Campo obrigatório")
 	private Integer telefone;
 	
 	public Integer getTelefone() {

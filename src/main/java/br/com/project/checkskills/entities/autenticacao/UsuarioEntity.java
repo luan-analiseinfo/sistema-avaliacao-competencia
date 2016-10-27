@@ -11,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
@@ -29,10 +30,12 @@ public class UsuarioEntity extends BaseEntity<Long> {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "USERNAME", length = 120, nullable = false)
+	@Column(name = "USERNAME", length = 120, nullable = false, unique=true)
+	@NotNull(message="Campo obrigatório")
 	private String username;
 
 	@Column(name = "EMAIL", length = 255, nullable = false, unique = true)
+	@NotNull(message="Campo obrigatório")
 	private String email;
 
 	@Column(name = "PASSWORD", length = 128, nullable = false)

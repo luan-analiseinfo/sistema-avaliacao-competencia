@@ -25,11 +25,11 @@ public class FuncionarioEntity extends BaseEntity<Long> {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name="NOME")
+	@Column(name="NOME",nullable=false,length=75)
 	@NotNull(message="Campo obrigatório")
 	private String nome;
 	
-	@Column(name="SEXO")
+	@Column(name="SEXO",length=1,nullable=false)
 	@NotNull(message="Campo obrigatório")
 	private String sexo;
 	

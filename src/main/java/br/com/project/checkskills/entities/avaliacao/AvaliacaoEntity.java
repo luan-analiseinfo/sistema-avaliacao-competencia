@@ -27,12 +27,12 @@ public class AvaliacaoEntity extends BaseEntity<Long> {
 	private static final long serialVersionUID = 1L;
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="ID_AVALICAO",referencedColumnName="ID_AVALIACAO")
+	@JoinColumn(name="ID_AVALICAO",referencedColumnName="ID_AVALIACAO", nullable=false)
 	private List<AvaliacaoCompetenciaEntity> avaliacaoCompetencias;
 
 	
 	@OneToOne( optional = false, fetch = FetchType.EAGER)
-	@JoinColumn(name="ID_FUNCIONARIO")
+	@JoinColumn(name="ID_FUNCIONARIO", nullable=false)
 	private FuncionarioEntity funcionario;
 	
 	@Column(name="STATUS")
