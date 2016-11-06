@@ -9,20 +9,133 @@
 
 <ui:composition template="/tampletes/modeloGeral.xhtml">
 	<ui:define name="conteudo">
-		<f:view>
-			<f:event listener="#{feedbackBean.onLoad()}" type="preRenderView"></f:event>
-		</f:view>
-		<ui:repeat value="#{feedbackBean.feedbacks}" var="feedback">
-			<bnu:panel id="funcPanel" title="#{feedback.titulo}" look="info" show-collapse-link="false"
-				collapsed="true" panel-footer="primary">
 
-				<h:outputText value="#{feedback.observacao}"></h:outputText>
-				<f:facet name="footer">
-					<h:outputText value="#{feedback.dataCadastro}" />
-				</f:facet>
-			</bnu:panel>
-		</ui:repeat>
+		<f:metadata>
+			<f:view>
+				<f:viewParam name="acao" value="#{feedbackBean.acao}" />
+				<f:viewParam name="codigo" value="#{feedbackBean.codigo}" />
+				<f:event listener="#{feedbackBean.onLoad()}" type="preRenderView"></f:event>
+			</f:view>
+		</f:metadata>
 
+		<bnu:panel id="funcPanel" title="Painel De Feedback" look="primary"
+			rendered="#{usuarioBean.roleLider}" panel-footer="primary">
+			<h:form id="oForm">
+				<bnu:panelGrid columns="2" cellpadding="5">
+					<bnu:dataTable widgetVar="FormDataTable" var="funcionario"
+						value="#{feedbackBean.funcionarioColecao}" searching="false"
+						paginated="false">
+
+						<h:inputHidden value="#{funcionario.id}" />
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="FUNCIONÁRIO" />
+							</f:facet>
+							<h:outputText value="#{funcionario.nome}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="E-MAIL" />
+							</f:facet>
+							<h:outputText value="#{funcionario.usuarioEntity.email}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="CARGO" />
+							</f:facet>
+							<h:outputText value="#{funcionario.cargo.nomeCargo}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="NÍVEL" />
+							</f:facet>
+							<h:outputText value="#{funcionario.cargo.nivelEntity.nivel}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="DEPARTAMENTO" />
+							</f:facet>
+							<h:outputText
+								value="#{funcionario.cargo.departamento.nomeDepartamento}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="STATUS" />
+							</f:facet>
+							<h:outputLabel value="Concluido" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="OPÇÕES" />
+							</f:facet>
+							<p:commandButton value="Enviar feedback"
+								actionListener="#{feedbackBean.add}"
+								oncomplete="PF('dialog').show();" update="@form">
+								<f:param value="AVALIAR" name="acao" />
+								<f:param value="#{funcionario.id}" name="codigo"
+									disabled="#{funcionario.avaliacao.status == false}" />
+							</p:commandButton>
+						</p:column>
+					</bnu:dataTable>
+				</bnu:panelGrid>
+
+				<p:dialog id="dlg" header="Feedback" widgetVar="dialog"
+					showEffect="explode" minHeight="40">
+
+
+					<h:message for="fdb_razao" />
+					<bnu:inputText id="fdb_razao"
+						value="#{feedbackBean.feedbackEntity.titulo}" label="Titulo"
+						required="true" required-message="Campo obrigatório"
+						readonly="#{feedbackBean.acao == 'DELETE'}">
+
+					</bnu:inputText>
+
+					<h:message for="fdb_ramo" />
+					<bnu:inputTextarea id="fdb_ramo"
+						value="#{feedbackBean.feedbackEntity.observacao}"
+						label="Observação" required="true"
+						required-message="Campo obrigatório"
+						readonly="#{feedbackBean.acao == 'DELETE'}">
+
+					</bnu:inputTextarea>
+
+
+					<f:facet name="footer">
+						<p:commandButton oncomplete="PF('dialog').hide();" value="criar"
+							action="#{feedbackBean.salvarOuDeletar()}"
+							styleClass="but but-success" />
+					</f:facet>
+
+					<f:facet name="footer">
+						<p:commandButton oncomplete="PF('dialog').hide();"
+							value="cancelar" styleClass="but but-info" />
+					</f:facet>
+
+				</p:dialog>
+
+
+			</h:form>
+		</bnu:panel>
+
+		<bnu:panel title="Feedback Disponíveis" look="primary"
+			panel-footer="primary">
+			<ui:repeat value="#{feedbackBean.feedbacks}" var="feedback">
+				<bnu:panel id="funcPanel" title="#{feedback.titulo}" look="info"
+					show-collapse-link="false" collapsed="true" panel-footer="primary">
+
+					<h:outputText value="#{feedback.observacao}"></h:outputText>
+					<f:facet name="footer">
+						<h:outputText value="#{feedback.dataCadastro}" />
+					</f:facet>
+				</bnu:panel>
+			</ui:repeat>
+		</bnu:panel>
 
 	</ui:define>
 </ui:composition>

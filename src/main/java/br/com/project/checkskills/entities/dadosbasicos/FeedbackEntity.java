@@ -77,8 +77,5 @@ public class FeedbackEntity extends BaseEntity<Long> {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-
-	
-    
     
 }
