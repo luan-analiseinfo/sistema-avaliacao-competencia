@@ -33,7 +33,7 @@ public class OrganizacaoEntity extends BaseEntity<Long>{
 	private String cnpj;
 	
 
-	@Column(name="TELEFONE", nullable=false)
+	@Column(name="TELEFONE", nullable=false, length=11)
 	@NotNull(message="Campo obrigatório")
 	private Integer telefone;
 	

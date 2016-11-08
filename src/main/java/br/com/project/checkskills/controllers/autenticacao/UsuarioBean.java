@@ -1,9 +1,12 @@
 package br.com.project.checkskills.controllers.autenticacao;
 
 import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -44,6 +47,13 @@ public class UsuarioBean implements Serializable {
 				roleLider = true;
 		}
 
+		public String logout() {
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+			session.invalidate();
+			
+			return "";
+		}
+		
 		public boolean isRoleAvaliado() {
 			return roleAvaliado;
 		}

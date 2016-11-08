@@ -72,18 +72,19 @@
 						<p:menuitem value="Analisar Resultados"
 							outcome="/pages/competencia/competenciaRelatorio.xhtml?faces-redirect=true"
 							icon="ui-icon-disk" />
-						<p:menuitem value="Feedback" rendered="#{usuarioBean.roleLider}" icon="ui-icon-link" />
+						<p:menuitem value="Feedback" 
+							outcome="/pages/feedback/feedbackDashboard.xhtml?faces-redirect=true"	rendered="#{usuarioBean.roleLider}" icon="ui-icon-link" />
 					</p:submenu>
 					<p:separator />
 					<p:submenu label="Avaliação" rendered="#{usuarioBean.roleAvaliado}">
 						<p:menuitem value="Analisar Resultados"
 							outcome="/pages/reports/avaliadoRelatorio.xhtml?faces-redirect=true"
 							icon="ui-icon-disk" />
-						<p:menuitem value="Feedback" rendered="#{usuarioBean.roleAvaliado}" icon="ui-icon-link" />
+						<p:menuitem value="Feedback" outcome="/pages/feedback/feedbackDashboard.xhtml?faces-redirect=true" rendered="#{usuarioBean.roleAvaliado}" icon="ui-icon-link" />
 					</p:submenu>
 
 					<p:submenu label="Configurações">
-						<p:menuitem value="Logout" />
+						<p:menuitem value="Logout" url="http://localhost:8080/checkskills/"/>
 						<p:menuitem value="Cliclo De Avaliação"
 							rendered="#{usuarioBean.roleAdmin}" />
 					</p:submenu>

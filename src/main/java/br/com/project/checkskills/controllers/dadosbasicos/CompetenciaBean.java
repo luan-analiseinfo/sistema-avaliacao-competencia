@@ -87,7 +87,7 @@ private static final long serialVersionUID = 1L;
 	public String deletar(){
 		if(this.competenciaEntity.getId() != null)
 			this.competenciaRepository.delete(this.competenciaEntity.getId());
-		
+		Messages.addFlashGlobalInfo("Dados exluidos com sucesso");
 		return "/pages/competencia/competenciaList.xhtml?faces-redirect=true";
 	}
 	

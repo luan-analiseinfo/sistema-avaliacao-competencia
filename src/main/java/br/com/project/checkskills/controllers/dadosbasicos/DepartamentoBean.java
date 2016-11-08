@@ -93,7 +93,7 @@ private static final long serialVersionUID = 1L;
 	public String deletar(){
 		if(this.departamentoEntity.getId() != null)
 			this.departamentoRepository.delete(this.departamentoEntity.getId());
-		
+		Messages.addFlashGlobalInfo("Dados excluidos com sucesso");
 		return "/pages/departamento/departamentoList.xhtml?faces-redirect=true";
 	}
 	

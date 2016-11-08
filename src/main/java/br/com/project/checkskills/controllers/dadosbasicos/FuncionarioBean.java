@@ -140,6 +140,7 @@ public class FuncionarioBean extends BaseEntity<Long> {
 	public String deletar() {
 		if (this.funcionarioEntity.getId() != null)
 			this.funcionarioRepository.delete(this.funcionarioEntity.getId());
+		Messages.addFlashGlobalInfo("Dados excluidos com sucesso");
 		return "/pages/funcionario/funcionarioList.xhtml?faces-redirect=true";
 	}
 

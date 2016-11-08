@@ -52,8 +52,8 @@
 				<h:message for="org_tel" />
 				<bnu:inputText id="org_tel"
 					value="#{organizacaoBean.organizacaoEntity.telefone}"
-					label="TELEFONE" required="true" placeholder="somente números" maxlength="13"
-					required-message="Campo obrigatório" converterMessage="Dados inválidos"
+					label="TELEFONE" required="true" placeholder="somente números" maxlength="11"
+					
 					readonly="#{organizacaoBean.acao == 'DELETE'}">
 					<f:validateBean />
 				</bnu:inputText>

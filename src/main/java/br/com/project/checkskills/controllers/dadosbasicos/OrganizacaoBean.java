@@ -56,10 +56,10 @@ private static final long serialVersionUID = 1L;
 	public String salvarOuDeletar(){
 			if(this.organizacaoEntity.getId() == null){
 			this.organizacaoRepository.save(organizacaoEntity);
-			Messages.addFlashGlobalInfo("Organização salva com sucesso");
+			Messages.addFlashGlobalInfo("Dados salvos com sucesso");
 		}else {
 			this.organizacaoRepository.save(organizacaoEntity);
-			Messages.addFlashGlobalInfo("Organização editada com sucesso");
+			Messages.addFlashGlobalInfo("Dados editados com sucesso");
 		}
 			LOGGER.info(organizacaoEntity);
 		return "/pages/organizacao/organizacaoList.xhtml?faces-redirect=true";		
@@ -69,7 +69,7 @@ private static final long serialVersionUID = 1L;
 	public String deletar(){
 		if(this.organizacaoEntity.getId() != null)
 			this.organizacaoRepository.delete(this.organizacaoEntity.getId());
-		
+		Messages.addFlashGlobalInfo("Dados excluidos com sucesso");
 		return "/pages/organizacao/organizacaoList.xhtml?faces-redirect=true";
 	}
 	
@@ -80,7 +80,6 @@ private static final long serialVersionUID = 1L;
 				organizacaoEntity = new OrganizacaoEntity();
 				organizacaoEntity = this.organizacaoRepository.findOne(codigo);
 				LOGGER.info(organizacaoEntity);
-				Messages.addFlashGlobalInfo("Dados carregados com sucesso");
 			}if (acao.equals("ADICIONAR")) {
 				this.organizacaoEntity = new OrganizacaoEntity();
 			}

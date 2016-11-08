@@ -66,12 +66,12 @@ public class CargoBean extends BaseEntity<Long> {
 		if (this.cargo.getId() == null) {
 			atualizarItensSelecionados();
 			this.cargoRepository.save(cargo);
-			Messages.addFlashGlobalInfo("Dados do cargo salvo com sucesso.");
+			Messages.addFlashGlobalInfo("Dados salvos com sucesso.");
 			
 		} else {
 			
 			this.cargoRepository.save(cargo);
-			Messages.addFlashGlobalInfo("Dados do cargo editado com sucesso.");
+			Messages.addFlashGlobalInfo("Dados editados com sucesso.");
 		}
 	} catch (Exception ex) {
 		ex.printStackTrace();
@@ -89,6 +89,7 @@ public class CargoBean extends BaseEntity<Long> {
 	public String deletar() {
 		try{
 				this.cargoRepository.delete(this.cargo.getId());
+				Messages.addFlashGlobalInfo("Dados excluidos com sucesso");
 		}catch(Exception ex ){
 			ex.printStackTrace();
 			Messages.addFlashGlobalError("Houve um erro ao tentar deletar", cargo.getNomeCargo());

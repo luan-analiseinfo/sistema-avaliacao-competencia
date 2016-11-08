@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
@@ -38,17 +39,19 @@ public class FuncionarioEntity extends BaseEntity<Long> {
 	@NotNull(message = "Campo obrigatório")
 	private String sexo;
 
-	@Past
+	@Past(message="Dados inválidos")
+	@NotNull(message="Campo obrigatório")
 	@Column(name = "DATA_NASCIMENTO", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataNasc;
 	
-	@Past
+	@Past(message="Dados inválidos")
+	@NotNull(message="Campo obrigatório")
 	@Column(name = "DATA_ADMISSAO", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAdmissao;
 
-	@Past
+    @Future(message="Dados inválidos")
 	@Column(name = "DATA_DEMISSAO")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataDemissao;

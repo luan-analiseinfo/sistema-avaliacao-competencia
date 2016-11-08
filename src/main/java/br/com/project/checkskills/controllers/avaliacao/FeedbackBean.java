@@ -64,7 +64,13 @@ public class FeedbackBean extends BaseEntity<Long> {
 
 	public void carregarFeedbacksPorUsuario() {
 		feedbacks = new ArrayList<>();
-		Long valor = isLider().getAvaliacao().getId();
+		Long valor;
+		if (isLider().getAvaliacao() != null) {
+			valor = isLider().getAvaliacao().getId();
+		}else{
+			valor = null;
+			Messages.addFlashGlobalInfo("Desculpe. Não há feedback dísponiveis favor verificar com responsável por sua avaliação");
+		}
 		this.feedbackRepository.findAll().forEach(item -> filtrarFeedUsuario(item,valor));
 	}
 
