@@ -63,11 +63,11 @@
 				<br/>
 				
 				<p:commandButton value="salvar" update="frm" styleClass="but but-success"
-					action="#{departamentoBean.salvarOuDeletar()}"
+					action="#{departamentoBean.salvar()}"
 					rendered="#{departamentoBean.acao == 'ADICIONAR'}" />
 
 				<p:commandButton value="Editar" update="frm" styleClass="but but-warning"
-					action="#{departamentoBean.salvarOuDeletar()}"
+					action="#{departamentoBean.salvar()}"
 					rendered="#{departamentoBean.acao == 'EDIT'}" />
 
 				<p:commandButton value="Excluir" update="frm" styleClass="but but-danger"

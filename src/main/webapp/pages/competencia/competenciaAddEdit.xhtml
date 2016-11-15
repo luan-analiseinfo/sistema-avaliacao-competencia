@@ -67,11 +67,11 @@
 				<br/>
 				
 				<p:commandButton value="salvar" update="frm" styleClass="but but-success"
-					action="#{competenciaBean.salvarOuDeletar()}"
+					action="#{competenciaBean.salvar()}"
 					rendered="#{competenciaBean.acao == 'ADICIONAR'}" />
 
 				<p:commandButton value="Editar" update="frm" styleClass="but but-warning"
-					action="#{competenciaBean.salvarOuDeletar()}"
+					action="#{competenciaBean.salvar()}"
 					rendered="#{competenciaBean.acao == 'EDIT'}" />
 
 				<p:commandButton value="Excluir" update="frm" styleClass="but but-danger"

@@ -42,11 +42,11 @@
 
 
 				<p:commandButton value="salvar" update="frm" styleClass="but but-success"
-					action="#{organizacaoBean.salvarOuDeletar()}"
+					action="#{organizacaoBean.salvar()}"
 					rendered="#{organizacaoBean.acao == 'ADICIONAR'}" />
 
 				<p:commandButton value="Editar" update="frm" styleClass="but but-warning"
-					action="#{organizacaoBean.salvarOuDeletar()}"
+					action="#{organizacaoBean.salvar()}"
 					rendered="#{organizacaoBean.acao == 'EDIT'}" />
 
 				<p:commandButton value="Excluir" update="frm" styleClass="but but-danger"

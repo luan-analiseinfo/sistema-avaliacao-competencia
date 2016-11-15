@@ -109,7 +109,7 @@ public class AvaliacaoBean extends BaseEntity<Long> {
 	}
 
 	// salvar ou atualizar
-	public String salvarOuDeletar() {
+	public String salvar() {
 		if (this.avaliacaoEntity.getId() == null) {
 			this.avaliacaoRepository.save(avaliacaoEntity);
 			Messages.addFlashGlobalInfo("Avaliação salva com sucesso");

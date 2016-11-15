@@ -64,13 +64,6 @@
 
 						<p:column>
 							<f:facet name="header">
-								<h:outputText value="STATUS" />
-							</f:facet>
-							<h:outputLabel value="Concluido" />
-						</p:column>
-
-						<p:column>
-							<f:facet name="header">
 								<h:outputText value="OPÇÕES" />
 							</f:facet>
 							<p:commandButton value="Enviar feedback"
@@ -108,7 +101,7 @@
 
 					<f:facet name="footer">
 						<p:commandButton oncomplete="PF('dialog').hide();" value="criar"
-							action="#{feedbackBean.salvarOuDeletar()}"
+							action="#{feedbackBean.salvar()}"
 							styleClass="but but-success" />
 					</f:facet>
 

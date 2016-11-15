@@ -73,7 +73,7 @@ private static final long serialVersionUID = 1L;
 
 	//salvar ou atualizar
 	
-	public String salvarOuDeletar(){
+	public String salvar(){
 		try {
 			if(this.departamentoEntity.getId() == null){
 				departamentoEntity.setOrganizacao(organizacaoSelecionado);

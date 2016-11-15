@@ -70,12 +70,12 @@
 
 				<p:commandButton value="salvar" update="frm"
 					styleClass="but but-success"
-					action="#{cargoBean.salvarOuDeletar()}"
+					action="#{cargoBean.salvar()}"
 					rendered="#{cargoBean.acao == 'ADICIONAR'}" />
 
 				<p:commandButton value="Editar" update="frm"
 					styleClass="but but-warning"
-					action="#{cargoBean.salvarOuDeletar()}"
+					action="#{cargoBean.salvar()}"
 					rendered="#{cargoBean.acao == 'EDIT'}" />
 
 				<p:commandButton value="Excluir" update="frm"

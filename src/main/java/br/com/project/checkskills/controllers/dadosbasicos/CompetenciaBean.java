@@ -63,7 +63,7 @@ private static final long serialVersionUID = 1L;
 	}
 
 	//salvar ou atualizar
-	public String salvarOuDeletar(){
+	public String salvar(){
 		try {
 			if(this.competenciaEntity.getId() == null){
 				competenciaEntity.setTipoCompetencia(tipoSelecionado);

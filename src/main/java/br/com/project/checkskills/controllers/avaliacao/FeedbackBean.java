@@ -109,7 +109,7 @@ public class FeedbackBean extends BaseEntity<Long> {
 		funcionarioColecao.add(isLider());
 	}
 
-	public String salvarOuDeletar() {
+	public String salvar() {
 		if (this.feedbackEntity.getId() == null) {
 			Date hoje = new Date();
 			feedbackEntity.setDataCadastro(hoje);

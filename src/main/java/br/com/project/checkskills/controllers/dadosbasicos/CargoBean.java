@@ -61,7 +61,7 @@ public class CargoBean extends BaseEntity<Long> {
 		this.niveis = this.nivelRepository.findAll();
 	}
 
-	public String salvarOuDeletar() {
+	public String salvar() {
 	try {
 		if (this.cargo.getId() == null) {
 			atualizarItensSelecionados();
