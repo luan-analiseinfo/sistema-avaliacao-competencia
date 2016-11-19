@@ -114,14 +114,20 @@ public class FeedbackBean extends BaseEntity<Long> {
 			Date hoje = new Date();
 			feedbackEntity.setDataCadastro(hoje);
 			System.out.println((Date) hoje);
-			this.feedbackRepository.save(feedbackEntity);
-			Messages.addFlashGlobalInfo("Feed Back salva com sucesso");
-		} else {
-			this.feedbackRepository.save(feedbackEntity);
-			Messages.addFlashGlobalInfo("Feed Back editada com sucesso");
+			if(ehValidoCampos()){
+				this.feedbackRepository.save(feedbackEntity);
+				Messages.addFlashGlobalInfo("Feed Back salva com sucesso");
+			}else{
+				feedbackEntity = null;
+				Messages.addFlashGlobalError("Houve um erro ao tentar salvar. Favor verificar se todos campos estão preenchidos");
+			}
+			
 		}
-		LOGGER.info(feedbackEntity);
 		return "/pages/feedback/feedbackDashboard.xhtml?faces-redirect=true";
+	}
+
+	public boolean ehValidoCampos() {
+		return !(feedbackEntity.getTitulo().equals("") || feedbackEntity.getObservacao().equals(""));
 	}
 
 	public String deletar() {
@@ -150,8 +156,7 @@ public class FeedbackBean extends BaseEntity<Long> {
 
 	// botão cancelar
 	public String cancel() {
-		this.setFeedbackEntity(null);
-		return "/pages/feedback/feedbackList.xhtml?faces-redirect=true";
+		return "/pages/feedback/feedbackDashboard.xhtml?faces-redirect=true";
 	}
 
 	// botão adicionar

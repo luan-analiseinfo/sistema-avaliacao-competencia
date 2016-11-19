@@ -68,7 +68,7 @@
 							</f:facet>
 							<p:commandButton value="Enviar feedback"
 								actionListener="#{feedbackBean.add}"
-								oncomplete="PF('dialog').show();" update="@form">
+								oncomplete="PF('dialog').show();" update=":funcPanel">
 								<f:param value="AVALIAR" name="acao" />
 								<f:param value="#{funcionario.id}" name="codigo"
 									disabled="#{funcionario.avaliacao.status == false}" />
@@ -78,36 +78,34 @@
 				</bnu:panelGrid>
 
 				<p:dialog id="dlg" header="Feedback" widgetVar="dialog"
-					showEffect="explode" minHeight="40">
+					showEffect="explode" minHeight="40" width="400" height="300">
 
 
 					<h:message for="fdb_razao" />
 					<bnu:inputText id="fdb_razao"
 						value="#{feedbackBean.feedbackEntity.titulo}" label="Titulo"
-						required="true" required-message="Campo obrigatório"
 						readonly="#{feedbackBean.acao == 'DELETE'}">
-
+						<f:validateBean />
 					</bnu:inputText>
 
 					<h:message for="fdb_ramo" />
 					<bnu:inputTextarea id="fdb_ramo"
 						value="#{feedbackBean.feedbackEntity.observacao}"
-						label="Observação" required="true"
-						required-message="Campo obrigatório"
-						readonly="#{feedbackBean.acao == 'DELETE'}">
-
+						label="Observação" readonly="#{feedbackBean.acao == 'DELETE'}">
+						<f:validateBean />
 					</bnu:inputTextarea>
 
 
 					<f:facet name="footer">
-						<p:commandButton oncomplete="PF('dialog').hide();" value="criar"
-							action="#{feedbackBean.salvar()}"
-							styleClass="but but-success" />
+						<p:commandButton value="criar" update="@form"
+							action="#{feedbackBean.salvar()}" styleClass="but but-success">
+						</p:commandButton>
 					</f:facet>
 
 					<f:facet name="footer">
 						<p:commandButton oncomplete="PF('dialog').hide();"
-							value="cancelar" styleClass="but but-info" />
+							value="cancelar" styleClass="but but-info" update="@form">
+						</p:commandButton>
 					</f:facet>
 
 				</p:dialog>

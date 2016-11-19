@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
@@ -30,10 +31,12 @@ public class FeedbackEntity extends BaseEntity<Long> {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "TITULO",length=75, nullable=false)
+	@NotNull(message = "Campo obrigatório")
 	private String titulo;
 	
     @Lob
     @Column(name = "OBSERVACAO",nullable=false,length=455)
+    @NotNull(message = "Campo obrigatório")
     private String observacao;
     
     @Basic(optional = false)
